@@ -19,6 +19,7 @@ def parse_args():
     args = argparse.ArgumentParser(description='Train Email Urgency Classifier')
     args.add_argument('--sample', type=int, default=None, help='Sample size')
     args.add_argument('--saved_model', action='store_true', help='Use saved model')
+    args.add_argument('--use_lora', action='store_true', help='Use LoRA embeddings')
     return args.parse_args()
 
 def main() -> None:
@@ -53,6 +54,7 @@ def main() -> None:
 
     train['silver_label'] = weaklabeler.predict(train, embeddings)
     train['label'] = train['gold_labels'].where(train['gold_labels'].isin([0, 1]), train['silver_label']).astype(int)
+    save_training_embeddings(train_config.embeddings_artifact_path, embeddings, train['label'].to_numpy())
     
     simfeatures = SimilarityFeatureExtraction()
     train_sim = simfeatures.extract(embeddings, train['label'].to_numpy())
@@ -61,10 +63,13 @@ def main() -> None:
     train_topics = topicfeatures.extract(train['body'], embeddings)
 
     train_text = train['body'].fillna('').astype(str).tolist()
-    lora = LoRA()
-    if not args.saved_model or not lora.config.merged_path.exists():
-        lora.fit(train_text, train['label'].to_numpy())
-    train_lora = pd.DataFrame(lora.embeddings(train_text)).add_prefix('lora_')
+    if args.use_lora:
+        lora = LoRA()
+        if not args.saved_model or not lora.config.merged_path.exists():
+            lora.fit(train_text, train['label'].to_numpy())
+        train_lora = pd.DataFrame(lora.embeddings(train_text)).add_prefix('lora_')
+    else:
+        train_lora = pd.DataFrame(embeddings).add_prefix('lora_')
 
     meta_cols = [col for col in metafeatures.columns if col != 'message_id']
     train_meta = train[meta_cols].reset_index(drop=True).fillna(0)
@@ -98,9 +103,14 @@ def main() -> None:
             best_threshold = threshold
 
     logistic = LogisticClassifier()
+    can_load_logistic = False
     if args.saved_model and logistic.config.model_path.exists():
-        logistic = LogisticClassifier.load(config=logistic.config)
-    else:
+        loaded_logistic = LogisticClassifier.load(config=logistic.config)
+        if has_matching_feature_schema(loaded_logistic, X_train):
+            logistic = loaded_logistic
+            can_load_logistic = True
+
+    if not can_load_logistic:
         logistic.fit(X_train, y_train)
         logistic.save(threshold=best_threshold)
         
@@ -113,6 +123,17 @@ def main() -> None:
 
     dataset = pd.concat([train.reset_index(drop=True), train_sim, train_topics, train_lora], axis=1)
     dataset.to_parquet(train_config.output_path, engine='pyarrow', index=False)
+
+def has_matching_feature_schema(logistic: LogisticClassifier, X: pd.DataFrame) -> bool:
+    fitted_features = getattr(logistic.model, 'feature_names_in_', None)
+    if fitted_features is None:
+        return False
+    return list(fitted_features) == list(X.columns)
+
+def save_training_embeddings(path, embeddings: np.ndarray, labels: np.ndarray) -> None:
+    """Persist training embeddings and labels for similarity features at eval/API time."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(path, embeddings=np.asarray(embeddings, dtype=np.float32), labels=np.asarray(labels, dtype=int))
 
 if __name__ == "__main__":
     main()

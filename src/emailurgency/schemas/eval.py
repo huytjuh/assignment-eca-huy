@@ -11,4 +11,5 @@ class EvaluationResult(BaseModel):
     accuracy: float
     precision: float
     recall: float
+    f1: float
     auc_roc: float

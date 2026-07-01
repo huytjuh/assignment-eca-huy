@@ -1,4 +1,4 @@
-.PHONY: help poetry-init poetry-config install activate data train test monitor api env-info clean clean-cache clean-build clean-venv clean-all
+.PHONY: help poetry-init poetry-config install activate data train eval test monitor api env-info clean clean-cache clean-build clean-venv clean-all
 
 help:
 	@echo "Available commands:"
@@ -9,6 +9,7 @@ help:
 	@echo "  make activate      Print the command to activate the Poetry environment"
 	@echo "  make data          Run the data preparation pipeline"
 	@echo "  make train         Run model training"
+	@echo "  make eval          Run model evaluation"
 	@echo "  make test          Run tests"
 	@echo "  make monitor       Run the monitoring pipeline"
 	@echo "  make api           Run the API"
@@ -34,9 +35,9 @@ data:
 	poetry run python -m scripts.run_data
 
 train:
-	poetry run python -m scripts.run_train --sample 20000 --saved_model
+	poetry run python -m scripts.run_train --saved_model
 
-test:
+eval:
 	poetry run python -m scripts.run_eval
 
 monitor:
@@ -44,6 +45,9 @@ monitor:
 
 api:
 	poetry run python -m scripts.run_uvicorn
+
+test:
+	poetry run pytest tests/ -q
 
 env-info:
 	poetry env info

@@ -97,13 +97,20 @@ class MetaFeatureExtraction(BaseFeatureExtraction):
 class TopicFeatureExtraction(BaseFeatureExtraction):
     """Extract topic features from emails."""
 
-    def __init__(self, config: FeatureConfig | None = None) -> None:
+    def __init__(self, config: FeatureConfig | None = None, load_existing: bool = False) -> None:
         super().__init__(config)
         try:
+            from configs.train_config import get_berttopic_config
             from src.emailurgency.models.berttopic import BERTTopicModel
 
-            self.model = BERTTopicModel()
+            topic_config = get_berttopic_config()
+            if load_existing:
+                self.model = BERTTopicModel.load(topic_config.model_path, config=topic_config)
+            else:
+                self.model = BERTTopicModel(config=topic_config)
         except Exception:
+            if load_existing:
+                raise
             self.model = None
 
     def extract(self, corpus: pd.Series, embeddings: np.ndarray) -> pd.DataFrame:
@@ -143,11 +150,13 @@ class SimilarityFeatureExtraction(BaseFeatureExtraction):
         super().__init__(config)
         self.vectordb = VectorDB(self.config)
         self.y: np.ndarray | None = None
+        self.reference_embeddings: np.ndarray | None = None
 
     def extract(self, embeddings: np.ndarray, y: np.ndarray) -> pd.DataFrame:
         """Fit VectorDB and return in-sample nearest-neighbor features."""
         embeddings = np.asarray(embeddings, dtype=np.float32)
         self.y = np.asarray(y, dtype=int)
+        self.reference_embeddings = embeddings
         self.vectordb.store(embeddings)
 
         k = min(self.config.k + 1, len(embeddings))
@@ -155,21 +164,42 @@ class SimilarityFeatureExtraction(BaseFeatureExtraction):
         return self._features(similarities[:, 1:], neighbors[:, 1:])
 
     def extract_new(self, embeddings: np.ndarray) -> pd.DataFrame:
-        """Return similarity features against the VectorDB fitted in extract."""
-        if self.y is None:
-            raise ValueError('Call extract before extract_new.')
+        """Return similarity features against the VectorDB fitted in extract.
 
+        If no in-process training reference exists, load persisted training embeddings
+        from the configured artifact file and rebuild the VectorDB.
+        """
         embeddings = np.asarray(embeddings, dtype=np.float32)
+        if self.y is None or self.reference_embeddings is None:
+            self._load_training_embeddings()
+
         k = min(self.config.k, len(self.y))
         similarities, neighbors = self.vectordb.search(embeddings, k=k)
         return self._features(similarities, neighbors)
+
+    def _load_training_embeddings(self) -> None:
+        from configs.train_config import get_train_config
+
+        train_config = get_train_config()
+        artifact_path = train_config.embeddings_artifact_path
+        if not artifact_path.exists():
+            raise ValueError(
+                "Training embeddings artifact not found. "
+                "Call extract() first or run training to create the artifact."
+            )
+
+        with np.load(artifact_path) as artifact:
+            self.reference_embeddings = np.asarray(artifact["embeddings"], dtype=np.float32)
+            self.y = np.asarray(artifact["labels"], dtype=int)
+
+        self.vectordb.store(self.reference_embeddings)
 
     def _features(self, similarities: np.ndarray, neighbors: np.ndarray) -> pd.DataFrame:
         labels = self.y[neighbors]
         pos = np.where(labels == 1, similarities, np.nan)
         neg = np.where(labels == 0, similarities, np.nan)
-        pos_mean = np.nan_to_num(np.nanmean(pos, axis=1), nan=0.0)
-        neg_mean = np.nan_to_num(np.nanmean(neg, axis=1), nan=0.0)
+        pos_mean = self._nanmean_or_zero(pos)
+        neg_mean = self._nanmean_or_zero(neg)
 
         return pd.DataFrame({
             'max_similarity': similarities.max(axis=1),
@@ -181,3 +211,9 @@ class SimilarityFeatureExtraction(BaseFeatureExtraction):
             'top_k_neg_similarity': neg_mean,
             'gap_similarity': pos_mean - neg_mean,
         })
+
+    def _nanmean_or_zero(self, values: np.ndarray) -> np.ndarray:
+        valid = ~np.isnan(values)
+        counts = valid.sum(axis=1)
+        sums = np.nansum(values, axis=1)
+        return np.divide(sums, counts, out=np.zeros(values.shape[0], dtype=float), where=counts > 0)

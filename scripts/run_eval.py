@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 
 import pandas as pd
 from sentence_transformers import SentenceTransformer
@@ -9,12 +10,14 @@ from configs.train_config import get_label_config, get_train_config
 from src.emailurgency.models.classifier import LogisticClassifier
 from src.emailurgency.models.labeler import WeakLabeler
 from src.emailurgency.models.lora import LoRA
+from src.emailurgency.pipelines.evaluation import Evaluation
 from src.emailurgency.pipelines.feature_extraction import MetaFeatureExtraction, SimilarityFeatureExtraction, TopicFeatureExtraction
 from src.emailurgency.pipelines.preprocess import PreProcess
 
 def parse_args():
     args = argparse.ArgumentParser(description="Evaluate Email Urgency Classifier")
     args.add_argument("--sample", type=int, default=None, help="Sample size")
+    args.add_argument('--use_lora', action='store_true', help='Use LoRA embeddings')
     return args.parse_args()
 
 def main() -> None:
@@ -43,13 +46,16 @@ def main() -> None:
     test["label"] = test["gold_labels"].where(test["gold_labels"].isin([0, 1]), test["silver_label"]).astype(int)
 
     simfeatures = SimilarityFeatureExtraction()
-    test_sim = simfeatures.extract(embeddings, test["label"].to_numpy())
+    test_sim = simfeatures.extract_new(embeddings)
 
-    topicfeatures = TopicFeatureExtraction()
+    topicfeatures = TopicFeatureExtraction(load_existing=True)
     test_topics = topicfeatures.extract_new(test["body"], embeddings)
 
-    lora = LoRA()
-    test_lora = pd.DataFrame(lora.embeddings(test_text)).add_prefix("lora_")
+    if args.use_lora:
+        lora = LoRA()
+        test_lora = pd.DataFrame(lora.embeddings(test_text)).add_prefix("lora_")
+    else:
+        test_lora = pd.DataFrame(embeddings).add_prefix('lora_')
 
     meta_cols = [col for col in metafeatures.columns if col != "message_id"]
     test_meta = test[meta_cols].reset_index(drop=True).fillna(0)
@@ -65,8 +71,18 @@ def main() -> None:
     test["threshold"] = threshold
 
     dataset = pd.concat([test.reset_index(drop=True), test_sim, test_topics, test_lora], axis=1)
-    dataset.to_parquet(train_config.eval_output_path, engine="pyarrow", index=False)
+    output_path = Path(train_config.eval_output_path)
+    dataset.to_parquet(output_path, engine="pyarrow", index=False)
 
+    metrics = Evaluation.compute(
+        y_true=dataset["label"],
+        y_proba=dataset["proba"],
+        y_pred=dataset["pred"],
+    )
+    metrics_path = output_path.with_name(f"{output_path.stem}_metrics.json")
+    metrics_path.write_text(metrics.model_dump_json(indent=2), encoding="utf-8")
+    print(f"Evaluation dataset written to {output_path}")
+    print(f"Evaluation metrics written to {metrics_path}")
 
 if __name__ == "__main__":
     main()

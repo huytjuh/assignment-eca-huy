@@ -19,6 +19,7 @@ class TrainConfig(BaseSettings):
     random_seed: int = 42
     sample_size: int | None = 10000
     output_path: Path = Path('data/dataset.parquet')
+    embeddings_artifact_path: Path = Path('artifacts/embeddings/train_embeddings.npz')
 
     spacy_model: str = 'artifacts/spacy/en_core_web_sm-3.8.0'
     spacy_max_length: int = 2000
@@ -63,14 +64,19 @@ class LexiconConfig(TrainConfig):
 class BERTTopicConfig(TrainConfig):
     model_config = {'env_file': '.env'}
 
-    model_path: Path = Path('artifacts/bertopic')
-    umap_n_neighbors: int = 15
+    model_path: Path = Path('artifacts/clustering/bertopic.pkl')
+    umap_n_neighbors: int = 5
     umap_n_components: int = 5
     umap_min_dist: float = 0.0
-    hdbscan_min_cluster_size: int = 15
+    hdbscan_min_cluster_size: int = 2
+    hdbscan_min_samples: int = 1
+    hdbscan_cluster_selection_epsilon: float = 0.0
     hdbscan_prediction_data: bool = True
-    tfidf_max_features: int = 5000
-    tfidf_stop_words: str = 'english'
+    
+    vectorizer_max_features: int = 5000
+    vectorizer_stop_words: str = 'english'
+    vectorizer_ngram_range: tuple[int, int] = (1, 2)
+    vectorizer_min_df: int = 1
 
     @property
     def umap_params(self) -> dict[str, Any]:
@@ -78,11 +84,22 @@ class BERTTopicConfig(TrainConfig):
 
     @property
     def hbdscan_params(self) -> dict[str, Any]:
-        return {'min_cluster_size': self.hdbscan_min_cluster_size, 'prediction_data': self.hdbscan_prediction_data}
+        return {
+            'min_cluster_size': self.hdbscan_min_cluster_size,
+            'min_samples': self.hdbscan_min_samples,
+            'cluster_selection_epsilon': self.hdbscan_cluster_selection_epsilon,
+            "metric": "euclidean",
+            'prediction_data': self.hdbscan_prediction_data,
+        }
 
     @property
-    def tfidf_params(self) -> dict[str, Any]:
-        return {'max_features': self.tfidf_max_features, 'stop_words': self.tfidf_stop_words}
+    def vectorizer_params(self) -> dict[str, Any]:
+        return {
+            "max_features": self.vectorizer_max_features,
+            "stop_words": self.vectorizer_stop_words,
+            "ngram_range": self.vectorizer_ngram_range,
+            "min_df": self.vectorizer_min_df,
+        }
 
 class LabelConfig(BaseSettings):
     model_config = {'env_file': '.env'}
