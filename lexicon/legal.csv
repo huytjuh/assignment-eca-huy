@@ -1,0 +1,33 @@
+prototype,source,similarity
+confidential,Seed,1.0
+privileged,Seed,1.0
+legal,Seed,1.0
+compliance,Seed,1.0
+audit,Seed,1.0
+regulatory,Seed,1.0
+document retention,Seed,1.0
+subpoena,Seed,1.0
+audit comm,Generated,0.8199999928474426
+comm,Generated,0.8199999928474426
+confidential question,Generated,0.7699999809265137
+variation confidential,Generated,0.7699999809265137
+know variation confidential,Generated,0.7699999809265137
+question,Generated,0.7699999809265137
+subpoenaed,Generated,0.7699999809265137
+additional information regulatory,Generated,0.7200000286102295
+regulatory context,Generated,0.7200000286102295
+information regulatory context,Generated,0.7200000286102295
+additional information,Generated,0.7200000286102295
+compliance activities,Generated,0.75
+activities,Generated,0.75
+regulatory policy,Generated,0.8700000047683716
+policy,Generated,0.8700000047683716
+confidential information discussed,Generated,0.7099999785423279
+confidential information,Generated,0.7099999785423279
+nature confidential information,Generated,0.7099999785423279
+information discussed,Generated,0.7099999785423279
+document control retention,Generated,0.7400000095367432
+document control,Generated,0.7400000095367432
+document,Generated,0.7400000095367432
+retention critical,Generated,0.7400000095367432
+rates,Generated,0.7400000095367432

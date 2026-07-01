@@ -1,0 +1,7 @@
+services:
+  email-api:
+    image: ecadamla/ds-assignment-email-api:latest
+    container_name: email-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

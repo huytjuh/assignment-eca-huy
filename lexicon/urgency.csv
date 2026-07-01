@@ -1,0 +1,113 @@
+prototype,source,similarity
+urgent,Seed,1.0
+asap,Seed,1.0
+eod,Seed,1.0
+end of day,Seed,1.0
+immediately,Seed,1.0
+right away,Seed,1.0
+as soon as possible,Seed,1.0
+deadline,Seed,1.0
+today,Seed,1.0
+escalation,Seed,1.0
+action required,Seed,1.0
+priority,Seed,1.0
+immediate,Seed,1.0
+accept deadline,Generated,0.6174089312553406
+december 20,Generated,0.6174089312553406
+candidates,Generated,0.6174089312553406
+20 accept,Generated,0.6174089312553406
+given,Generated,0.6174089312553406
+meet deadlines,Generated,0.6435713171958923
+asked ensure,Generated,0.6435713171958923
+meet,Generated,0.6435713171958923
+asked,Generated,0.6435713171958923
+possible,Generated,0.6435713171958923
+deadline like,Generated,0.7549469470977783
+let know,Generated,0.7549469470977783
+just let,Generated,0.7549469470977783
+like,Generated,0.7549469470977783
+know,Generated,0.7549469470977783
+today 30,Generated,0.6002572178840637
+30,Generated,0.6002572178840637
+working deadline,Generated,0.7211533784866333
+im working,Generated,0.7211533784866333
+don know,Generated,0.7211533784866333
+right don,Generated,0.7211533784866333
+urgent letter,Generated,0.6247003078460693
+letter attached,Generated,0.6247003078460693
+letter,Generated,0.6247003078460693
+attached,Generated,0.6247003078460693
+today friday,Generated,0.6271064281463623
+friday,Generated,0.6271064281463623
+shortly,Generated,0.637904167175293
+deadline slipping,Generated,0.7022333145141602
+suggest deadline,Generated,0.7022333145141602
+light activities,Generated,0.7022333145141602
+suggest,Generated,0.7022333145141602
+slipping light,Generated,0.7022333145141602
+today tomorrow,Generated,0.6969677209854126
+tomorrow,Generated,0.6969677209854126
+soon possible,Generated,0.6340574622154236
+soon,Generated,0.6340574622154236
+questions deadline,Generated,0.768450915813446
+questions,Generated,0.768450915813446
+project deadline,Generated,0.617517352104187
+energy derivatives,Generated,0.617517352104187
+30 2001,Generated,0.617517352104187
+students,Generated,0.617517352104187
+dear,Generated,0.617517352104187
+urgent need,Generated,0.6941797137260437
+contact,Generated,0.6941797137260437
+need,Generated,0.6941797137260437
+hopefully know,Generated,0.6941797137260437
+need contact,Generated,0.6538399457931519
+establish deadline,Generated,0.7688301801681519
+need establish,Generated,0.7688301801681519
+establish,Generated,0.7688301801681519
+edi deadline,Generated,0.607007622718811
+line deadline,Generated,0.607007622718811
+00 noon,Generated,0.607007622718811
+11,Generated,0.607007622718811
+line,Generated,0.607007622718811
+fw urgent,Generated,0.62629634141922
+urgent read,Generated,0.62629634141922
+read immediately,Generated,0.62629634141922
+fw,Generated,0.62629634141922
+deadline tomorrow,Generated,0.7823845148086548
+tomorrow morning,Generated,0.8168371915817261
+morning,Generated,0.8168371915817261
+trade deadline,Generated,0.636328935623169
+deadline week,Generated,0.636328935623169
+week trades,Generated,0.636328935623169
+trade,Generated,0.636328935623169
+week,Generated,0.636328935623169
+urgent attention,Generated,0.6436493396759033
+attention,Generated,0.6436493396759033
+request urgent,Generated,0.6313456296920776
+urgent send,Generated,0.6313456296920776
+request,Generated,0.6313456296920776
+send email,Generated,0.6313456296920776
+tell,Generated,0.6313456296920776
+don deadline,Generated,0.632321834564209
+transport,Generated,0.632321834564209
+transport don,Generated,0.632321834564209
+don,Generated,0.632321834564209
+let know deadline,Generated,0.75
+know deadline like,Generated,0.75
+know deadline,Generated,0.75
+im working deadline,Generated,0.7200000286102295
+working deadline right,Generated,0.7200000286102295
+deadline right,Generated,0.7200000286102295
+deadline end week,Generated,0.7200000286102295
+understand deadline,Generated,0.7200000286102295
+understand deadline end,Generated,0.7200000286102295
+deadline end,Generated,0.7200000286102295
+11 00 deadline,Generated,0.7799999713897705
+00 deadline,Generated,0.7799999713897705
+11 00,Generated,0.7799999713897705
+time meet deadlines,Generated,0.7300000190734863
+deadlines,Generated,0.7300000190734863
+time meet,Generated,0.7300000190734863
+time,Generated,0.7300000190734863
+deadlines notification,Generated,0.7400000095367432
+notification,Generated,0.7400000095367432

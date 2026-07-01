@@ -1,0 +1,47 @@
+prototype,source,similarity
+please review,Seed,1.0
+please approve,Seed,1.0
+need your input,Seed,1.0
+can you send,Seed,1.0
+please confirm,Seed,1.0
+follow up,Seed,1.0
+required approval,Seed,1.0
+pending response,Seed,1.0
+review approve,Generated,0.7799999713897705
+review,Generated,0.7799999713897705
+approve,Generated,0.7799999713897705
+approval required,Generated,0.8700000047683716
+approval,Generated,0.8700000047683716
+required,Generated,0.8700000047683716
+review lets discuss,Generated,0.7599999904632568
+lets discuss,Generated,0.7599999904632568
+review lets,Generated,0.7599999904632568
+discuss,Generated,0.7599999904632568
+approved,Generated,0.7099999785423279
+review thanks,Generated,0.75
+thanks,Generated,0.75
+review let know,Generated,0.7200000286102295
+review let,Generated,0.7200000286102295
+let know think,Generated,0.7200000286102295
+know,Generated,0.7200000286102295
+send,Generated,0.7099999785423279
+review comment,Generated,0.7699999809265137
+comment,Generated,0.7699999809265137
+review comments,Generated,0.7099999785423279
+comments,Generated,0.7099999785423279
+review acceptable forward,Generated,0.7099999785423279
+review acceptable,Generated,0.7099999785423279
+acceptable forward,Generated,0.7099999785423279
+acceptable,Generated,0.7099999785423279
+review send okay,Generated,0.7599999904632568
+review send,Generated,0.7599999904632568
+send okay,Generated,0.7599999904632568
+review asap,Generated,0.7099999785423279
+asap,Generated,0.7099999785423279
+review let discuss,Generated,0.75
+let discuss,Generated,0.75
+approve comments,Generated,0.7400000095367432
+reviewing,Generated,0.699999988079071
+review let talk,Generated,0.7200000286102295
+let talk,Generated,0.7200000286102295
+talk,Generated,0.7200000286102295

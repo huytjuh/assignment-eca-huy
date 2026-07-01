@@ -1,0 +1,30 @@
+prototype,source,similarity
+no-reply,Seed,1.0
+announcement,Seed,1.0
+notification,Seed,1.0
+noreply,Seed,1.0
+system generated,Seed,1.0
+automated message,Seed,1.0
+do not reply,Seed,1.0
+auto-generated,Seed,1.0
+delivery status notification,Seed,1.0
+mail delivery failed,Seed,1.0
+out of office,Seed,1.0
+calendar notification,Seed,1.0
+reminder,Seed,1.0
+just reminder,Generated,0.7200000286102295
+just,Generated,0.7200000286102295
+recipients failed,Generated,0.7300000190734863
+following recipients failed,Generated,0.7300000190734863
+delivery following recipients,Generated,0.7300000190734863
+recipients,Generated,0.7300000190734863
+failed,Generated,0.7300000190734863
+generated delivery status,Generated,0.800000011920929
+delivery status,Generated,0.800000011920929
+automatically generated delivery,Generated,0.800000011920929
+delivery failed 550,Generated,0.7400000095367432
+recipient delivery failed,Generated,0.7400000095367432
+delivery failed,Generated,0.7400000095367432
+message encountered delivery,Generated,0.7400000095367432
+failed 550,Generated,0.7400000095367432
+delivery,Generated,0.7300000190734863

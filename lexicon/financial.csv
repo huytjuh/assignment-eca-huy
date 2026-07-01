@@ -1,0 +1,60 @@
+prototype,source,similarity
+invoice,Seed,1.0
+payment,Seed,1.0
+wire transfer,Seed,1.0
+settlement,Seed,1.0
+contract,Seed,1.0
+deal,Seed,1.0
+trade,Seed,1.0
+pricing,Seed,1.0
+confirmation,Seed,1.0
+payment schedule,Generated,0.7200000286102295
+schedule,Generated,0.7200000286102295
+accepting invoice,Generated,0.75
+intent accepting invoice,Generated,0.75
+accepting,Generated,0.75
+believe intent accepting,Generated,0.75
+wire transfer looking,Generated,0.7200000286102295
+transfer,Generated,0.7200000286102295
+transfer looking,Generated,0.7200000286102295
+transfer looking week,Generated,0.7200000286102295
+question invoices,Generated,0.699999988079071
+asked question invoices,Generated,0.699999988079071
+invoices,Generated,0.699999988079071
+lee ve asked,Generated,0.699999988079071
+question,Generated,0.699999988079071
+october preliminary invoice,Generated,0.7300000190734863
+preliminary invoice,Generated,0.7300000190734863
+october preliminary,Generated,0.7300000190734863
+preliminary,Generated,0.7300000190734863
+regarding invoice,Generated,0.75
+regarding invoice gave,Generated,0.75
+invoice gave,Generated,0.75
+invoice gave couple,Generated,0.75
+invoice sent accts,Generated,0.7200000286102295
+gentlemen subject invoice,Generated,0.7200000286102295
+subject invoice,Generated,0.7200000286102295
+subject invoice sent,Generated,0.7200000286102295
+seen recall invoice,Generated,0.7300000190734863
+recall invoice,Generated,0.7300000190734863
+seen recall,Generated,0.7300000190734863
+seen,Generated,0.7300000190734863
+clear invoices,Generated,0.7099999785423279
+trying clear invoices,Generated,0.7099999785423279
+trying clear,Generated,0.7099999785423279
+clear,Generated,0.7099999785423279
+invoice does belong,Generated,0.699999988079071
+invoice does,Generated,0.699999988079071
+does belong,Generated,0.699999988079071
+does,Generated,0.699999988079071
+prepare invoice,Generated,0.7099999785423279
+use prepare invoice,Generated,0.7099999785423279
+use prepare,Generated,0.7099999785423279
+use,Generated,0.7099999785423279
+enclosed contract deal,Generated,0.7300000190734863
+enclosed contract,Generated,0.7300000190734863
+contract deal,Generated,0.7300000190734863
+invoice question tomorrow,Generated,0.7099999785423279
+answer invoice,Generated,0.7099999785423279
+invoice question,Generated,0.7099999785423279
+answer invoice question,Generated,0.7099999785423279

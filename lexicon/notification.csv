@@ -1,0 +1,168 @@
+prototype,source,similarity
+meeting,Seed,1.0
+schedule,Seed,1.0
+calendar,Seed,1.0
+conference call,Seed,1.0
+call in,Seed,1.0
+reschedule,Seed,1.0
+appointment,Seed,1.0
+availability,Seed,1.0
+all employees,Seed,1.0
+distribution list,Seed,1.0
+mailing list,Seed,1.0
+team announcement,Seed,1.0
+company-wide,Seed,1.0
+broadcast,Seed,1.0
+internal announcement,Seed,1.0
+new mailing list,Generated,0.699999988079071
+list set outlook,Generated,0.699999988079071
+addresses new mailing,Generated,0.699999988079071
+outlook,Generated,0.699999988079071
+let know addresses,Generated,0.699999988079071
+conference scheduled friday,Generated,0.7699999809265137
+conference scheduled,Generated,0.7699999809265137
+scheduled friday 18th,Generated,0.7699999809265137
+conference,Generated,0.7699999809265137
+scheduled,Generated,0.7699999809265137
+conference scheduled november,Generated,0.7200000286102295
+scheduled november 12,Generated,0.7200000286102295
+15 pm est,Generated,0.7200000286102295
+lets reschedule,Generated,0.8500000238418579
+lets,Generated,0.8500000238418579
+names distribution list,Generated,0.7200000286102295
+add names distribution,Generated,0.7200000286102295
+names distribution,Generated,0.7200000286102295
+favor add names,Generated,0.7200000286102295
+concerns schedule,Generated,0.7099999785423279
+know concerns schedule,Generated,0.7099999785423279
+let know concerns,Generated,0.7099999785423279
+let know,Generated,0.7099999785423279
+schedule week,Generated,0.7300000190734863
+week,Generated,0.7300000190734863
+mark calendars,Generated,0.699999988079071
+mark calendars accordingly,Generated,0.699999988079071
+calendars accordingly,Generated,0.699999988079071
+calendars,Generated,0.699999988079071
+accordingly,Generated,0.699999988079071
+distribution,Generated,0.9200000166893004
+list,Generated,0.9200000166893004
+fix calendar,Generated,0.7400000095367432
+fix,Generated,0.7400000095367432
+adjust calendar,Generated,0.7200000286102295
+adjust calendar accordingly,Generated,0.7200000286102295
+calendar accordingly,Generated,0.7200000286102295
+adjust,Generated,0.7200000286102295
+conference scheduled morning,Generated,0.7400000095367432
+cst dial,Generated,0.7400000095367432
+00 cst dial,Generated,0.7400000095367432
+morning 00 cst,Generated,0.7400000095367432
+meeting person,Generated,0.699999988079071
+person,Generated,0.699999988079071
+schedule attached,Generated,0.7799999713897705
+attached,Generated,0.7799999713897705
+calender,Generated,0.8399999737739563
+schedule details,Generated,0.7799999713897705
+details,Generated,0.7799999713897705
+conference invite participate,Generated,0.699999988079071
+conference invite,Generated,0.699999988079071
+invite participate,Generated,0.699999988079071
+participate,Generated,0.699999988079071
+scheduled friday june,Generated,0.7099999785423279
+00am central time,Generated,0.7099999785423279
+meetings meetings meetings,Generated,0.8100000023841858
+meetings meetings,Generated,0.8100000023841858
+meetings,Generated,0.8100000023841858
+current schedule,Generated,0.7400000095367432
+current,Generated,0.7400000095367432
+haven ordered calendars,Generated,0.7200000286102295
+ordered calendars,Generated,0.7200000286102295
+calendars let know,Generated,0.7200000286102295
+ordered calendars let,Generated,0.7200000286102295
+roundtable meeting,Generated,0.699999988079071
+roundtable,Generated,0.699999988079071
+conference scheduled monday,Generated,0.7300000190734863
+scheduled monday 15th,Generated,0.7300000190734863
+15th 00 need,Generated,0.7300000190734863
+details conference tomorrow,Generated,0.75
+details conference,Generated,0.75
+conference tomorrow,Generated,0.75
+calling conference,Generated,0.7799999713897705
+calling,Generated,0.7799999713897705
+schedule subject change,Generated,0.7099999785423279
+schedule subject,Generated,0.7099999785423279
+note schedule subject,Generated,0.7099999785423279
+note schedule,Generated,0.7099999785423279
+info conference,Generated,0.8199999928474426
+info,Generated,0.8199999928474426
+fundies conference portland,Generated,0.7300000190734863
+fundies conference,Generated,0.7300000190734863
+conference portland,Generated,0.7300000190734863
+portland,Generated,0.7300000190734863
+mark calendar,Generated,0.699999988079071
+mark,Generated,0.699999988079071
+stuff meeting,Generated,0.7099999785423279
+stuff,Generated,0.7099999785423279
+conflict calender,Generated,0.699999988079071
+conflict,Generated,0.699999988079071
+right distribution list,Generated,0.7599999904632568
+looking right distribution,Generated,0.7599999904632568
+kind information looking,Generated,0.7599999904632568
+add schedule,Generated,0.7300000190734863
+add,Generated,0.7300000190734863
+remember regular conference,Generated,0.699999988079071
+conference coming monday,Generated,0.699999988079071
+regular conference coming,Generated,0.699999988079071
+conference coming,Generated,0.699999988079071
+00am cst,Generated,0.699999988079071
+look conference today,Generated,0.7699999809265137
+conference today,Generated,0.7699999809265137
+look conference,Generated,0.7699999809265137
+today,Generated,0.7699999809265137
+separate distribution list,Generated,0.7799999713897705
+distribution list feasible,Generated,0.7799999713897705
+keeping separate distribution,Generated,0.7799999713897705
+separate distribution,Generated,0.7799999713897705
+attached schedule thursday,Generated,0.7099999785423279
+schedule thursday 30,Generated,0.7099999785423279
+schedule thursday,Generated,0.7099999785423279
+attached schedule,Generated,0.7099999785423279
+details conference monday,Generated,0.75
+conference monday jan,Generated,0.75
+conference monday,Generated,0.75
+need conference,Generated,0.7400000095367432
+need,Generated,0.7400000095367432
+conference tomorrow sunday,Generated,0.75
+ll,Generated,0.699999988079071
+schedule thursday march,Generated,0.699999988079071
+attached schedule tuesday,Generated,0.7099999785423279
+schedule tuesday,Generated,0.7099999785423279
+schedule tuesday june,Generated,0.7099999785423279
+tuesday june 11,Generated,0.7099999785423279
+order distribution list,Generated,0.7099999785423279
+talk order distribution,Generated,0.7099999785423279
+need talk order,Generated,0.7099999785423279
+tuesday june 18,Generated,0.7099999785423279
+schedule thursday june,Generated,0.7099999785423279
+mail,Generated,0.7400000095367432
+add distribution list,Generated,0.8299999833106995
+add distribution,Generated,0.8299999833106995
+brad add distribution,Generated,0.8299999833106995
+schedule tuesday march,Generated,0.699999988079071
+thursday june 13,Generated,0.699999988079071
+schedule thursday feb,Generated,0.7099999785423279
+conference today 11,Generated,0.7200000286102295
+advised conference today,Generated,0.7200000286102295
+today 11 30a,Generated,0.7200000286102295
+does calendar look,Generated,0.7200000286102295
+calendar look,Generated,0.7200000286102295
+does calendar,Generated,0.7200000286102295
+look,Generated,0.7200000286102295
+lines available conference,Generated,0.7200000286102295
+limited number lines,Generated,0.7200000286102295
+lines available,Generated,0.7200000286102295
+number lines available,Generated,0.7200000286102295
+available conference,Generated,0.7200000286102295
+schedule looks good,Generated,0.7099999785423279
+schedule looks,Generated,0.7099999785423279
+looks good,Generated,0.7099999785423279
+good,Generated,0.7099999785423279

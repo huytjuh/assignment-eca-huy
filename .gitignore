@@ -1,0 +1,73 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments and local tooling
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.ipynb_checkpoints/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+
+# Data files generated or downloaded locally
+/data/
+!/data/.gitkeep
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.sqlite
+*.sqlite3
+*.db
+
+# Model artifacts and generated ML assets
+/artifacts/
+!/artifacts/.gitkeep
+/checkpoints/
+/models/
+/runs/
+/mlruns/
+/wandb/
+
+
+# Hugging Face / Torch / model caches
+.cache/
+.huggingface/
+hf_cache/
+torch_cache/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
