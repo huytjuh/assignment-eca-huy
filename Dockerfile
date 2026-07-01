@@ -29,7 +29,6 @@ COPY lexicon ./lexicon
 COPY README.md ./README.md
 
 RUN poetry install --only main \
-    && python -m scripts.install_torch_gpu \
     && mkdir -p /app/data /app/artifacts \
     && useradd --create-home --shell /usr/sbin/nologin appuser \
     && chown -R appuser:appuser /app
