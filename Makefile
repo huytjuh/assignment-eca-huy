@@ -1,4 +1,4 @@
-.PHONY: help poetry-init poetry-config install install-gpu-torch activate data train test api env-info clean clean-cache clean-build clean-venv clean-all
+.PHONY: help poetry-init poetry-config install activate data train test monitor api env-info clean clean-cache clean-build clean-venv clean-all
 
 help:
 	@echo "Available commands:"
@@ -10,6 +10,7 @@ help:
 	@echo "  make data          Run the data preparation pipeline"
 	@echo "  make train         Run model training"
 	@echo "  make test          Run tests"
+	@echo "  make monitor       Run the monitoring pipeline"
 	@echo "  make api           Run the API"
 	@echo "  make env-info      Show Poetry environment info"
 	@echo "  make clean-cache   Remove Python cache directories"
@@ -25,10 +26,6 @@ poetry-config:
 
 install:
 	poetry install
-	$(MAKE) install-gpu-torch
-
-install-gpu-torch:
-	poetry run python -m scripts.install_torch_gpu
 
 activate:
 	poetry env activate
@@ -41,6 +38,9 @@ train:
 
 test:
 	poetry run python -m scripts.run_eval
+
+monitor:
+	poetry run python -m scripts.run_monitor
 
 api:
 	poetry run python -m scripts.run_uvicorn

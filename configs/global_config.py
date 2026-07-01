@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 from pathlib import Path
+from dataclasses import field
 
 from functools import lru_cache
 from pydantic_settings import BaseSettings
@@ -46,6 +47,21 @@ class FeatureConfig(BaseSettings):
         return {'batch_size': self.embeddings_batch_size, 'normalize_embeddings': True}
 
 
+class MonitorConfig(BaseSettings):
+    model_config = {'env_file': '.env'}
+
+    label_drift_threshold: float = 0.15
+    topic_drift_threshold: float = 0.20
+    confidence_drift_threshold: float = 0.15
+    uncertainty_threshold: float = 0.40
+    review_confidence_threshold: float = 0.65
+    min_samples: int = 100
+    max_review_items: int = 50
+    label_names: dict[int, str] = field(default_factory=lambda: {0: "low", 1: "high"})
+
+
+
+
 @lru_cache
 def get_data_config() -> DataConfig:
     return DataConfig()
@@ -57,3 +73,7 @@ def get_preprocess_config() -> PreProcessConfig:
 @lru_cache
 def get_feature_config() -> FeatureConfig:
     return FeatureConfig()
+
+@lru_cache
+def get_monitor_config() -> MonitorConfig:
+    return MonitorConfig()
